@@ -6,14 +6,30 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"/>
   </head>
   <body>
-    <h1>Landmark {{ index + 1 }}/25</h1>
-    {% if index > 0 %}
-    <p>nice one</p>
+    <h1>Landmark {{ index }}/15</h1>
+    {% if index > 1 %}
+      <div class="correctness">
+        {% if correct_guess == True %}
+          <p>Your guess was correct! Your score is now {{ score }}</p>
+        {% else %}
+          <p>Your guess was incorrect. Your score is {{ score }}</p>
+        {% endif %}
+      </div>
+      <div class="previous-landmark">
+        <h3>Previous Landmark:</h3>
+        <p>Name: {{ previous_landmark.lpc_name }}</p>
+        <p>Address: {{ previous_landmark.address }}</p>
+        <p>Borough: {{ previous_landmark.borough }}</p>
+        <p>URL: {{ previous_landmark.url_report }}</p>
+      </div>
     {% endif %}
-    <div id="map">
+    <div class="map">
         {{ folium_html|safe }}
     </div>
-    <p>Name of Landmark:</p>
+    <div class="current-landmark">
+      <h3>Current Landmark:</h3>
+      <p>Name of Landmark: {{ current_landmark.lpc_name }}</p>
+    </div>
     <form method="POST">
       <input type="text" name="guess" placeholder="Borough: SI, BK, MN, BX, or QN">
       <button type="submit">Submit Guess</button>

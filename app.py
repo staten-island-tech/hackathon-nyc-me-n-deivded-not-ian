@@ -24,7 +24,7 @@ def game():
         session["current_landmark"] = {}
         session["offsets"] = []
 
-    if session.get("index") >= 25:
+    if session.get("index") >= 15:
         return redirect('/endscreen')
     else:
         if request.method == "POST":
@@ -36,13 +36,14 @@ def game():
                 else:
                     session["correct_guess"] = False
         
-            session["index"] += 1
             session["landmarks"][session["current_landmark"]["objectid"]] = {
                 "coords": [pair[::-1] for pair in session["current_landmark"]["the_geom"]["coordinates"][0][0]],
                 "name": session["current_landmark"]["lpc_name"]
             }
 
             return redirect("/game")
+
+        session["index"] += 1
 
         i = 0
         while True:
@@ -105,7 +106,7 @@ def game():
                         ).add_to(nyc_map)
 
                 folium_html = nyc_map._repr_html_()
-                return render_template("game.html", landmark=landmark, folium_html=folium_html, previous_landmark=session.get("previous_landmark"), index=session.get("index"))
+                return render_template("game.html", current_landmark=session.get("current_landmark"), folium_html=folium_html, previous_landmark=session.get("previous_landmark"), index=session.get("index"), correct_guess=session.get("correct_guess"), score=session.get("score"))
             
 @app.route('/endscreen')
 def endscreen():

@@ -5,7 +5,7 @@
     <title>NYC Landmark Guesser</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"/>
   </head>
-  <body>
+  <body class="endscreen">
     <h1>You completed the game!</h1>
     <p>Your final score was: {{ score }}</p>
     <a href="{{ url_for('index')}}">

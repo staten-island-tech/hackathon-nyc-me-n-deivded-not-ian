@@ -5,7 +5,7 @@
     <title>NYC Landmark Guesser</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"/>
   </head>
-  <body>
+  <body class="error">
     <h1>An Error Has Occured</h1>
     <p>{{ error }}</p>
     <a href="{{ url_for('index')}}">
