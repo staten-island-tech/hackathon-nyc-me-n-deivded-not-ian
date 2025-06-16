@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>NYC Landmark Guesser</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"/>
+  </head>
+  <body>
+    <h1>Landmark {{ index + 1 }}/25</h1>
+    {% if index > 0 %}
+    <p>nice one</p>
+    {% endif %}
+    <div id="map">
+        {{ folium_html|safe }}
+    </div>
+    <p>Name of Landmark:</p>
+    <form method="POST">
+      <input type="text" name="guess" placeholder="Borough: SI, BK, MN, BX, or QN">
+      <button type="submit">Submit Guess</button>
+    </form>
+  </body>
+</html>

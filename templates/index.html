@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>NYC Landmark Guesser</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"/>
+  </head>
+  <body>
+    <h1>NYC Landmark Location Guesser!</h1>
+    <h2>How to play:</h2>
+    <p>You will be given the names of 25 landmarks in NYC in sequence, and you will have to guess which borough they are located in. In the form, you must type SI for Staten Island, BK for Brooklyn, MN for Manhattan, BX for the Bronx, or QN for Queens. Your goal is to try to get as high of a score as possible.</p>
+    <a href="{{ url_for('game')}}">
+        <button type="button">Return to the home page</button>
+    </a>
+  </body>
+</html>
